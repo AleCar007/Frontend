@@ -10,7 +10,7 @@ function App () {
   // Usaremos useEffect con un arreglo de dependencias vacío para que se ejecute solo una vez
 
   const sendSearch = (search) => {
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${search}&limit=25&offset=0&rating=g&lang=en`)
+    fetch('https://api.github.com/repos/facebook/react/issues')
       .then(response => response.json())
       .then((results) => {
         console.log(results.data)
