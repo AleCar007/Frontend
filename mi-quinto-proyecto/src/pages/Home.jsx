@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([])
@@ -16,7 +17,7 @@ const Home = () => {
   }
 
   const filteredPokemons = pokemons.filter(pokemon => {
-    return pokemon.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+    return pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
   return (
@@ -33,7 +34,11 @@ const Home = () => {
             <div className='col-sm-4 mb-4' key={pokemon.name}>
               <div className='card'>
                 <img className='card-img-top' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`} alt={pokemon.name} />
-                <div className='card-body' />
+                <div className='card-body'>
+                  <Link to={`/pokemon/${pokemon.url.split('/')[6]}`}>
+                    <h4 className='card-title'>{pokemon.name}</h4>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -42,5 +47,4 @@ const Home = () => {
     </>
   )
 }
-
 export default Home
